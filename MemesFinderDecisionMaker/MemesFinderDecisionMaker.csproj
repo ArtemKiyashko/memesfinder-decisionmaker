@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MemesFinderDecisionMaker.Interfaces\MemesFinderDecisionMaker.Interfaces.csproj" />
-    <ProjectReference Include="..\MemesFinderDecisionMaker.Models\MemesFinderDecisionMaker.Models.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
