@@ -3,16 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemesFinderDecisionMaker", "MemesFinderDecisionMaker\MemesFinderDecisionMaker.csproj", "{1B806F1D-A406-4206-9F7F-19B1AA34C447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemesFinderDecisionMaker", "MemesFinderDecisionMaker\MemesFinderDecisionMaker.csproj", "{1B806F1D-A406-4206-9F7F-19B1AA34C447}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemesFinderDecisionMaker.Models", "MemesFinderDecisionMaker.Models\MemesFinderDecisionMaker.Models.csproj", "{36390DEE-372B-4345-A074-34786F475200}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemesFinderDecisionMaker.Interfaces", "MemesFinderDecisionMaker.Interfaces\MemesFinderDecisionMaker.Interfaces.csproj", "{48ACCCE3-ECC2-4B15-B691-508CBABD14F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemesFinderDecisionMaker.Interfaces", "MemesFinderDecisionMaker.Interfaces\MemesFinderDecisionMaker.Interfaces.csproj", "{48ACCCE3-ECC2-4B15-B691-508CBABD14F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{807005FC-A19B-4BE7-8465-0EF8E2141D1F}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemesFinderDecisionMaker.Manager", "MemesFinderDecisionMaker. Manager\MemesFinderDecisionMaker.Manager.csproj", "{1FC44D86-A230-4B17-97FC-65E1A73C0577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +24,14 @@ Global
 		{1B806F1D-A406-4206-9F7F-19B1AA34C447}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B806F1D-A406-4206-9F7F-19B1AA34C447}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B806F1D-A406-4206-9F7F-19B1AA34C447}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36390DEE-372B-4345-A074-34786F475200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36390DEE-372B-4345-A074-34786F475200}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36390DEE-372B-4345-A074-34786F475200}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36390DEE-372B-4345-A074-34786F475200}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48ACCCE3-ECC2-4B15-B691-508CBABD14F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{48ACCCE3-ECC2-4B15-B691-508CBABD14F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48ACCCE3-ECC2-4B15-B691-508CBABD14F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48ACCCE3-ECC2-4B15-B691-508CBABD14F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC44D86-A230-4B17-97FC-65E1A73C0577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC44D86-A230-4B17-97FC-65E1A73C0577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC44D86-A230-4B17-97FC-65E1A73C0577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC44D86-A230-4B17-97FC-65E1A73C0577}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
