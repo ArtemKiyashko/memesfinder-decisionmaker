@@ -31,20 +31,17 @@ namespace MemesFinderDecisionMaker
         {
             var decision = await _deciscionMakerManager.GetFinalDecisionAsync(tgMessage);
 
-            if (!decision.Decision)
-            {
-                HandleNegativeDecision(_logger, decision);
-                return;
-            }
-
-            await _serviceBusMessageSender.SendMessageAsync(tgMessage);
+            if (decision.Decision)
+                await _serviceBusMessageSender.SendMessageAsync(tgMessage);
+            else
+                HandleNegativeDecision(decision);
         }
 
-        private static void HandleNegativeDecision(ILogger log, DecisionManagerResult decision)
+        private void HandleNegativeDecision(DecisionManagerResult decision)
         {
             var aggregatedMessages = decision.Messages
                 .Aggregate((f, s) => $"{f}{Environment.NewLine}{s}");
-            log.LogInformation($"Negative decision taken: {aggregatedMessages}");
+            _logger.LogInformation($"Negative decision taken: {aggregatedMessages}");
         }
     }
 }
