@@ -2,6 +2,7 @@
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(MemesFinderDecisionMaker.Startup))]
 namespace MemesFinderDecisionMaker
@@ -18,7 +19,11 @@ namespace MemesFinderDecisionMaker
             builder.Services.AddServiceTxtMessageClient(_functionConfig);
             builder.Services.AddDecisionManager(_functionConfig);
 
-            builder.Services.AddLogging();
+            builder.Services.AddLogging(logBuilder =>
+                {
+                    logBuilder.AddApplicationInsights();
+                }
+            );
         }
     }
 }

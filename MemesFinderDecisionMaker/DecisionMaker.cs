@@ -29,8 +29,6 @@ namespace MemesFinderDecisionMaker
         [FunctionName("DecisionMaker")]
         public async Task Run([ServiceBusTrigger("allmessages", "decisionmaker", Connection = "ServiceBusOptions")] Update tgMessage)
         {
-            string messageString = tgMessage.ToJson();
-
             var decision = await _deciscionMakerManager.GetFinalDecisionAsync(tgMessage);
 
             if (!decision.Decision)
@@ -39,7 +37,7 @@ namespace MemesFinderDecisionMaker
                 return;
             }
 
-            await _serviceBusMessageSender.SendMessageAsync(messageString);
+            await _serviceBusMessageSender.SendMessageAsync(tgMessage);
         }
 
         private static void HandleNegativeDecision(ILogger log, DecisionManagerResult decision)

@@ -4,15 +4,18 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.11.1" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.ServiceBus" Version="5.8.1" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.3" />
     <PackageReference Include="Telegram.Bot" Version="18.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.ApplicationInsights" Version="2.21.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MemesFinderDecisionMaker. Manager\MemesFinderDecisionMaker.Manager.csproj" />
     <ProjectReference Include="..\MemesFinderDecisionMaker.Interfaces\MemesFinderDecisionMaker.Interfaces.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Microsoft.Extensions.Logging.ApplicationInsights" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

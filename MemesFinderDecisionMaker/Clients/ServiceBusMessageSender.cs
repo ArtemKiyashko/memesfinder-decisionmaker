@@ -1,8 +1,10 @@
 ﻿using Azure.Messaging.ServiceBus;
+using MemesFinderDecisionMaker.Extentions;
 using MemesFinderDecisionMaker.Interfaces.AzureClient;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using Telegram.Bot.Types;
 
 namespace MemesFinderDecisionMaker.Clients
 {
@@ -18,19 +20,11 @@ namespace MemesFinderDecisionMaker.Clients
             _serviceBusClient = serviceBusClient;
         }
 
-        public async Task SendMessageAsync(string messageString)
+        public async Task SendMessageAsync(Update message)
         {
-            try
-            {
-                await using ServiceBusSender sender = _serviceBusClient.CreateSender();
-                ServiceBusMessage serviceBusMessage = new(messageString);
-                await sender.SendMessageAsync(serviceBusMessage);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error while sending message to Service Bus");
-                return;
-            }
+            await using ServiceBusSender sender = _serviceBusClient.CreateSender();
+            ServiceBusMessage serviceBusMessage = new(message.ToJson());
+            await sender.SendMessageAsync(serviceBusMessage);
         }
 
     }
