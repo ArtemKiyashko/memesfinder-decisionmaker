@@ -21,9 +21,12 @@ namespace MemesFinderDecisionMaker
 
             builder.Services.AddLogging(logBuilder =>
                 {
-                    logBuilder.AddApplicationInsights();
-                }
-            );
+                    var appInsightsConnectionString = _functionConfig.GetValue<string>("APPLICATIONINSIGHTS_CONNECTION_STRING");
+                    if (!string.IsNullOrEmpty(appInsightsConnectionString))
+                        logBuilder.AddApplicationInsights(
+                            configureTelemetryConfiguration: (config) => config.ConnectionString = appInsightsConnectionString,
+                            configureApplicationInsightsLoggerOptions: (options) => { });
+                });
         }
     }
 }
