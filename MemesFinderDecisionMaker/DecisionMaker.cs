@@ -1,7 +1,6 @@
 using MemesFinderDecisionMaker.Clients;
 using MemesFinderDecisionMaker.Extentions;
 using MemesFinderDecisionMaker.Interfaces.DecisionMaker;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,25 +26,27 @@ namespace MemesFinderDecisionMaker
             _deciscionMakerManager = deciscionMakerManager;
         }
 
-        [FunctionName("Decision Maker")]
-        public async Task<IActionResult> Run([ServiceBusTrigger("allmessages", "decisionmaker", Connection = "ServiceBusOptions")] Update tgMessage)
+        [FunctionName("DecisionMaker")]
+        public async Task Run([ServiceBusTrigger("allmessages", "decisionmaker", Connection = "ServiceBusOptions")] Update tgMessage)
         {
             string messageString = tgMessage.ToJson();
 
             var decision = await _deciscionMakerManager.GetFinalDecisionAsync(tgMessage);
 
             if (!decision.Decision)
-                return HandleNegativeDecision(_logger, decision);
+            {
+                HandleNegativeDecision(_logger, decision);
+                return;
+            }
 
-            return await _serviceBusMessageSender.SendMessageAsync(messageString);
+            await _serviceBusMessageSender.SendMessageAsync(messageString);
         }
 
-        private static IActionResult HandleNegativeDecision(ILogger log, DecisionManagerResult decision)
+        private static void HandleNegativeDecision(ILogger log, DecisionManagerResult decision)
         {
             var aggregatedMessages = decision.Messages
                 .Aggregate((f, s) => $"{f}{Environment.NewLine}{s}");
             log.LogInformation($"Negative decision taken: {aggregatedMessages}");
-            return new OkObjectResult(aggregatedMessages);
         }
     }
 }

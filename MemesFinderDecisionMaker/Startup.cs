@@ -1,7 +1,5 @@
-﻿using MemesFinderDecisionMaker.Clients;
-using MemesFinderDecisionMaker.Interfaces.AzureClient;
+﻿using MemesFinderDecisionMaker.Extentions;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using Microsoft.Azure.WebJobs.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,8 +15,9 @@ namespace MemesFinderDecisionMaker
                 .AddEnvironmentVariables()
                 .Build();
 
-            builder.Services.Configure<ServiceBusOptions>(_functionConfig.GetSection("ServiceBusOptions"));
-            builder.Services.AddTransient<IServiceBusClient, ServiceBusTxtMessageClient>();
+            builder.Services.AddServiceTxtMessageClient(_functionConfig);
+            builder.Services.AddDecisionManager(_functionConfig);
+
             builder.Services.AddLogging();
         }
     }
