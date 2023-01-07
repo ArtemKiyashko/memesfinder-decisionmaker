@@ -16,6 +16,6 @@ namespace MemesFinderDecisionMaker.Clients
             _serviceBusOptions = serviceBusOptions.Value;
         }
 
-        public ServiceBusSender CreateSender() => _serviceBusClient.CreateSender(_serviceBusOptions.TextMessageTopic);
+        public ServiceBusSender CreateSender() => _serviceBusClient.CreateSender(_serviceBusOptions.TextMessagesTopic);
     }
 }
