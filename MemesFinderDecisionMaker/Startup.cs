@@ -19,14 +19,7 @@ namespace MemesFinderDecisionMaker
             builder.Services.AddServiceTxtMessageClient(_functionConfig);
             builder.Services.AddDecisionManager(_functionConfig);
 
-            builder.Services.AddLogging(logBuilder =>
-                {
-                    var appInsightsConnectionString = _functionConfig.GetValue<string>("APPLICATIONINSIGHTS_CONNECTION_STRING");
-                    if (!string.IsNullOrEmpty(appInsightsConnectionString))
-                        logBuilder.AddApplicationInsights(
-                            configureTelemetryConfiguration: (config) => config.ConnectionString = appInsightsConnectionString,
-                            configureApplicationInsightsLoggerOptions: (options) => { });
-                });
+            builder.Services.AddLogging();
         }
     }
 }
