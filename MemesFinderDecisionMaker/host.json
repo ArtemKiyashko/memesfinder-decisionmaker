@@ -11,7 +11,7 @@
             "default": "Information",
             "Host.Results": "Information",
             "Host.Aggregator": "Information",
-            "Function": "Trace"
+            "Function": "Information"
         }
     }
 }
