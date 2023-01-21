@@ -27,7 +27,7 @@ namespace MemesFinderDecisionMaker
         }
 
         [FunctionName("DecisionMaker")]
-        public async Task Run([ServiceBusTrigger("allmessages", "decisionmaker", Connection = "ServiceBusOptions")] Update tgMessage)
+        public async Task Run([ServiceBusTrigger("generalmessages", "decisionmaker", Connection = "ServiceBusOptions")] Update tgMessage)
         {
             var decision = await _deciscionMakerManager.GetFinalDecisionAsync(tgMessage);
 
