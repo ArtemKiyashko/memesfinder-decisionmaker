@@ -11,10 +11,10 @@ namespace MemesFinderDecisionMaker.Clients
     //send object to the server 
     public class ServiceBusMessageSender : IServiceBusMessageSender
     {
-        private readonly ILogger<DecisionMaker> _logger;
+        private readonly ILogger<ServiceBusMessageSender> _logger;
         private readonly IServiceBusClient _serviceBusClient;
 
-        public ServiceBusMessageSender(ILogger<DecisionMaker> log, IServiceBusClient serviceBusClient)
+        public ServiceBusMessageSender(ILogger<ServiceBusMessageSender> log, IServiceBusClient serviceBusClient)
         {
             _logger = log;
             _serviceBusClient = serviceBusClient;

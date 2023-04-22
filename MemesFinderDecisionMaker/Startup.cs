@@ -19,7 +19,10 @@ namespace MemesFinderDecisionMaker
             builder.Services.AddServiceTxtMessageClient(_functionConfig);
             builder.Services.AddDecisionManager(_functionConfig);
 
-            builder.Services.AddLogging();
+            builder.Services.AddLogging(logBuilder =>
+            {
+                logBuilder.AddConsole();
+            });
         }
     }
 }
