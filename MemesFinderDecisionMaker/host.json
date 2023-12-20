@@ -5,10 +5,10 @@
             "samplingSettings": {
                 "isEnabled": true,
                 "excludedTypes": "Request"
+            },
+            "snapshotConfiguration": {
+                "isEnabled": true
             }
-        },
-        "snapshotConfiguration": {
-            "isEnabled": true
         },
         "logLevel": {
             "MemesFinderDecisionMaker.DecisionMaker": "Information",

@@ -1,5 +1,4 @@
 using MemesFinderDecisionMaker.Clients;
-using MemesFinderDecisionMaker.Extentions;
 using MemesFinderDecisionMaker.Interfaces.DecisionMaker;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
