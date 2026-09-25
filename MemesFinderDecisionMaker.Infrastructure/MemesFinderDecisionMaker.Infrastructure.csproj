@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MemesFinderDecisionMaker. Manager\MemesFinderDecisionMaker.Manager.csproj" />
+    <ProjectReference Include="..\MemesFinderDecisionMaker.Manager\MemesFinderDecisionMaker.Manager.csproj" />
     <ProjectReference Include="..\MemesFinderDecisionMaker.Interfaces\MemesFinderDecisionMaker.Interfaces.csproj" />
   </ItemGroup>
 
