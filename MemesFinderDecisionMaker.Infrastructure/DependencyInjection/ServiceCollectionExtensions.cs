@@ -1,9 +1,8 @@
 ﻿using Azure.Identity;
+using Azure.Messaging.ServiceBus;
 using MemesFinderDecisionMaker.Interfaces.AzureClient;
 using MemesFinderDecisionMaker.Interfaces.DecisionMaker;
 using MemesFinderDecisionMaker.Manager.DecisionMaker;
-using Microsoft.Azure.WebJobs.ServiceBus;
-using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -25,12 +24,10 @@ namespace MemesFinderDecisionMaker.Infrastructure.DependencyInjection
         {
             services.Configure<ServiceBusOptions>(configuration.GetSection("ServiceBusOptions"));
 
-            services.AddAzureClients(clientBuilder =>
+            services.AddSingleton(provider =>
             {
-                var provider = services.BuildServiceProvider();
-
-                clientBuilder.UseCredential(new DefaultAzureCredential());
-                clientBuilder.AddServiceBusClientWithNamespace(provider.GetRequiredService<IOptions<ServiceBusOptions>>().Value.FullyQualifiedNamespace);
+                var options = provider.GetRequiredService<IOptions<ServiceBusOptions>>().Value;
+                return new ServiceBusClient(options.FullyQualifiedNamespace, new DefaultAzureCredential());
             });
 
             services.AddTransient<IServiceBusClient, ServiceBusTxtMessageClient>();

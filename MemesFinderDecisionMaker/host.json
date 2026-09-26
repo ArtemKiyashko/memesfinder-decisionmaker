@@ -1,15 +1,7 @@
 {
     "version": "2.0",
+    "telemetryMode": "OpenTelemetry",
     "logging": {
-        "applicationInsights": {
-            "samplingSettings": {
-                "isEnabled": true,
-                "excludedTypes": "Request"
-            },
-            "snapshotConfiguration": {
-                "isEnabled": true
-            }
-        },
         "logLevel": {
             "MemesFinderDecisionMaker.DecisionMaker": "Information",
             "MemesFinderDecisionMaker.Manager.DecisionMaker.DecisionMakerManager": "Information",

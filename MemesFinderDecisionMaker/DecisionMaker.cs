@@ -1,6 +1,6 @@
 using MemesFinderDecisionMaker.Clients;
 using MemesFinderDecisionMaker.Interfaces.DecisionMaker;
-using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace MemesFinderDecisionMaker
             _deciscionMakerManager = deciscionMakerManager;
         }
 
-        [FunctionName("DecisionMaker")]
+        [Function("DecisionMaker")]
         public async Task Run([ServiceBusTrigger("generalmessages", "decisionmaker", Connection = "ServiceBusOptions")] Update tgMessage)
         {
             var decision = await _deciscionMakerManager.GetFinalDecisionAsync(tgMessage);
